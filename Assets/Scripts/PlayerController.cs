@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
     private float sideWayForce = 100f;
+    private int score = 0;
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,15 @@ public class PlayerController : MonoBehaviour
         if ( Input.GetKey("a")){
             rb.AddForce(-sideWayForce * speed * Time.deltaTime, 0, 0);
         }
-        
+    }
+
+    // Increments the value of score when the Player touches an object tagged Pickup
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Pickup"){
+            score += 1;
+            Destroy(other.gameObject);
+        }
+        Debug.Log($"Score: {score}");
     }
 
 }
