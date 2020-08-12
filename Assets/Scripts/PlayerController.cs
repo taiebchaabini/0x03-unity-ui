@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 20f;
     private float sideWayForce = 100f;
     private int score = 0;
+    public int health = 5;
     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -36,8 +37,12 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pickup"){
             score += 1;
             Destroy(other.gameObject);
+            Debug.Log($"Score: {score}");
         }
-        Debug.Log($"Score: {score}");
+        if (other.tag == "Trap"){
+            health -= 1;
+            Debug.Log($"Health: {health}");
+        }
     }
 
 }
