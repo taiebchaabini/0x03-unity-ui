@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     public int health = 5;
     public Rigidbody rb;
+    public Text healthUI;
+    public Text scoreUI;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Updates each frame rate
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
             score = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        healthUI.text = $"HEALTH: {health}";
+        scoreUI.text = $"SCORE: {score}";
     }
     // FixedUpdate has the frequency of the physics system; it is called every fixed frame-rate frame
     void FixedUpdate()
