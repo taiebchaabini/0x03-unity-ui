@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,15 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    // Updates each frame rate
+    void Update(){
+        if (health == 0){
+            Debug.Log("Game Over!");
+            health = 5;
+            score = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
     // FixedUpdate has the frequency of the physics system; it is called every fixed frame-rate frame
     void FixedUpdate()
     {
@@ -42,6 +52,9 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Trap"){
             health -= 1;
             Debug.Log($"Health: {health}");
+        }
+        if (other.tag == "Goal"){
+            Debug.Log("You win!");
         }
     }
 
