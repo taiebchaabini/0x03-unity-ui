@@ -22,8 +22,6 @@ public class PlayerController : MonoBehaviour
     void Update(){
         if (health == 0){
             Debug.Log("Game Over!");
-            health = 5;
-            score = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         healthUI.text = $"HEALTH: {health}";
