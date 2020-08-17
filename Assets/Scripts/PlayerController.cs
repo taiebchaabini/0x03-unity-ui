@@ -6,12 +6,18 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    /// <summary>Speed movement of the player.</summary>
     public float speed = 20f;
+    // Force used with player movement.
     private float sideWayForce = 100f;
+    // Current player score.
     private int score = 0;
+    /// <summary>Health of the player.</summary>
     public int health = 5;
+    /// <summary>Rigidbody of the player.</summary>
     public Rigidbody rb;
-    public Text healthUI;
+    /// <summary>Score gameobject, used to display the score in UI, works with the function SetScoreText().</summary>
+    public Text ScoreText;
     public Text scoreUI;
     // Start is called before the first frame update
     void Start()
@@ -24,8 +30,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        healthUI.text = $"HEALTH: {health}";
-        scoreUI.text = $"SCORE: {score}";
+        SetScoreText();
     }
     // FixedUpdate has the frequency of the physics system; it is called every fixed frame-rate frame
     void FixedUpdate()
@@ -49,7 +54,6 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pickup"){
             score += 1;
             Destroy(other.gameObject);
-            Debug.Log($"Score: {score}");
         }
         if (other.tag == "Trap"){
             health -= 1;
@@ -60,4 +64,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the score in the UI.
+    /// </summary>
+    void SetScoreText()
+    {
+        this.ScoreText.text = $"Score: {score}";
+    }
 }
