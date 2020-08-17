@@ -16,9 +16,10 @@ public class PlayerController : MonoBehaviour
     public int health = 5;
     /// <summary>Rigidbody of the player.</summary>
     public Rigidbody rb;
-    /// <summary>Score gameobject, used to display the score in UI, works with the function SetScoreText().</summary>
+    /// <summary>Used to display the score in UI, works with the function SetScoreText().</summary>
     public Text ScoreText;
-    public Text scoreUI;
+    /// <summary>Used to display the score in UI, works with the function SetHealthText().</summary>
+    public Text HealthText ;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         SetScoreText();
+        SetHealthText();
     }
     // FixedUpdate has the frequency of the physics system; it is called every fixed frame-rate frame
     void FixedUpdate()
@@ -57,7 +59,6 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "Trap"){
             health -= 1;
-            Debug.Log($"Health: {health}");
         }
         if (other.tag == "Goal"){
             Debug.Log("You win!");
@@ -70,5 +71,9 @@ public class PlayerController : MonoBehaviour
     void SetScoreText()
     {
         this.ScoreText.text = $"Score: {score}";
+    }
+    void SetHealthText()
+    {
+        this.HealthText.text = $"Health: {health}";
     }
 }
