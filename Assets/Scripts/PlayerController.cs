@@ -31,7 +31,9 @@ public class PlayerController : MonoBehaviour
     // Updates each frame rate
     void Update(){
         if (health == 0){
-            Debug.Log("Game Over!");
+            WinLoseBG.SetActive(true);
+            WinLoseBG.transform.GetChild(0).GetComponent<Text>().text = "Game Over!";
+            WinLoseBG.transform.GetChild(0).GetComponent<Text>().color = Color.white;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         SetScoreText();
