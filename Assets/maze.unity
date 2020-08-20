@@ -3918,7 +3918,6 @@ MonoBehaviour:
   rb: {fileID: 1018937589}
   ScoreText: {fileID: 1468407186}
   HealthText: {fileID: 870272135}
-  Canvas: {fileID: 1560688486}
 --- !u!54 &1018937589
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5737,7 +5736,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
