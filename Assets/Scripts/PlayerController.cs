@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
             WinLoseBG.SetActive(true);
             WinLoseBG.transform.GetChild(0).GetComponent<Text>().text = "Game Over!";
             WinLoseBG.transform.GetChild(0).GetComponent<Text>().color = Color.white;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(LoadScene(3));
         }
         SetScoreText();
         SetHealthText();
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
             WinLoseBG.transform.GetChild(0).GetComponent<Text>().text = "You Win!";
             WinLoseBG.transform.GetChild(0).GetComponent<Text>().color = Color.black;
             WinLoseBG.GetComponent<Image>().color = Color.green;
+            StartCoroutine(LoadScene(3));
         }
     }
 
@@ -80,8 +81,21 @@ public class PlayerController : MonoBehaviour
     {
         this.ScoreText.text = $"Score: {score}";
     }
+
+    /// <summary>
+    /// Updates the score in the UI.
+    /// </summary> 
     void SetHealthText()
     {
         this.HealthText.text = $"Health: {health}";
+    }
+    /// <summary>
+    /// Coroutine to reload the scene after number of seconds
+    /// </summary>
+    /// <param name="seconds">Number of seconds before reloading the scene</param>
+    /// <returns></returns>
+    IEnumerator LoadScene(float seconds){
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
