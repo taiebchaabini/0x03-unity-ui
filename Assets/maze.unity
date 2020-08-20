@@ -3847,7 +3847,7 @@ MonoBehaviour:
   speed: 20
   health: 5
   rb: {fileID: 1018937589}
-  ScoreText: {fileID: 0}
+  ScoreText: {fileID: 505231406}
   HealthText: {fileID: 0}
 --- !u!54 &1018937589
 Rigidbody:
