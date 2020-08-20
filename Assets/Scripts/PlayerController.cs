@@ -19,10 +19,13 @@ public class PlayerController : MonoBehaviour
     /// <summary>Used to display the score in UI, works with the function SetScoreText().</summary>
     public Text ScoreText;
     /// <summary>Used to display the score in UI, works with the function SetHealthText().</summary>
-    public Text HealthText ;
+    public Text HealthText;
+    // Shows victory or lose
+    private GameObject WinLoseBG;
     // Start is called before the first frame update
     void Start()
     {
+      WinLoseBG = GameObject.Find("Canvas").transform.GetChild(2).gameObject;
     }
 
     // Updates each frame rate
@@ -61,7 +64,10 @@ public class PlayerController : MonoBehaviour
             health -= 1;
         }
         if (other.tag == "Goal"){
-            Debug.Log("You win!");
+            WinLoseBG.SetActive(true);
+            WinLoseBG.transform.GetChild(0).GetComponent<Text>().text = "You Win!";
+            WinLoseBG.transform.GetChild(0).GetComponent<Text>().color = Color.black;
+            WinLoseBG.GetComponent<Image>().color = Color.green;
         }
     }
 
